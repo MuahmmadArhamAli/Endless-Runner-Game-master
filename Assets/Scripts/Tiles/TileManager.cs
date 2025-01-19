@@ -1,8 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
 
 public class TileManager : MonoBehaviour
-{
+{   
+    public static TileManager Instance { get; private set;}
+    public int scoreMultiplier = 1;
+
     private List<GameObject> activeTiles;
     public GameObject[] tilePrefabs;
 
@@ -16,6 +21,10 @@ public class TileManager : MonoBehaviour
 
     private int previousIndex;
 
+    private void Awake(){
+        Instance = this;
+    }
+
     void Start()
     {
         activeTiles = new List<GameObject>();
@@ -24,19 +33,27 @@ public class TileManager : MonoBehaviour
             if(i==0)
                 SpawnTile();
             else
-                SpawnTile(Random.Range(0, totalNumOfTiles));
+                SpawnTile(UnityEngine.Random.Range(0, totalNumOfTiles));
         }
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
+        ScoreMultiplier.OnPlayerEntered += ScoreMultiplier_OnPlayerEntered;
+
+    }
+
+    private void ScoreMultiplier_OnPlayerEntered(object sender, EventArgs e){
+        scoreMultiplier += 1;
+
+        StartCoroutine(ScoreMultiplierTimer());
     }
     void Update()
     {
         if(playerTransform.position.z - 30 >= zSpawn - (numberOfTiles * tileLength))
         {
-            int index = Random.Range(0, totalNumOfTiles);
+            int index = UnityEngine.Random.Range(0, totalNumOfTiles);
             while(index == previousIndex)
-                index = Random.Range(0, totalNumOfTiles);
+                index = UnityEngine.Random.Range(0, totalNumOfTiles);
 
             DeleteTile();
             SpawnTile(index);
@@ -66,6 +83,12 @@ public class TileManager : MonoBehaviour
     {
         activeTiles[0].SetActive(false);
         activeTiles.RemoveAt(0);
-        PlayerManager.score += 3;
+        PlayerManager.score += 3 * scoreMultiplier;
+    }
+
+    private System.Collections.IEnumerator ScoreMultiplierTimer(){
+        yield return new WaitForSeconds(5f);
+
+        scoreMultiplier -= 1;
     }
 }

@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public bool isInvincible = false;
+
     private CharacterController controller;
     private Vector3 move;
     public float forwardSpeed;
@@ -133,13 +136,23 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
+{
+    if (hit.transform.CompareTag("Obstacle"))
     {
-        if(hit.transform.tag == "Obstacle")
+        if (!isInvincible)
         {
+            // Trigger game over if not invincible
             PlayerManager.gameOver = true;
             FindObjectOfType<AudioManager>().PlaySound("GameOver");
         }
+        else
+        {
+            // If invincible, let the player phase through obstacles
+            Physics.IgnoreCollision(hit.collider, controller, true);
+        }
     }
+}
+
 
     private IEnumerator Slide()
     {

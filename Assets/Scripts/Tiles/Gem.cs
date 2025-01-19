@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using System;
+using System.Collections;
 
 public class Gem : MonoBehaviour
 {
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
@@ -17,7 +20,7 @@ public class Gem : MonoBehaviour
 
             PlayerPrefs.SetInt("TotalGems", PlayerPrefs.GetInt("TotalGems", 0) + 1);
             FindObjectOfType<AudioManager>().PlaySound("PickUp");
-            PlayerManager.score += 2;
+            PlayerManager.score += 2 * TileManager.Instance.scoreMultiplier;
             gameObject.SetActive(false);
         }
     }
