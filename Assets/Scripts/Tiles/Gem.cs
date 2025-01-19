@@ -10,7 +10,7 @@ public class Gem : MonoBehaviour
         if(other.tag == "Player")
         {
             GameObject effect = ObjectPool.instance.GetPooledObject();
-
+            
             if(effect!= null)
             {
                 effect.transform.position = transform.position;
