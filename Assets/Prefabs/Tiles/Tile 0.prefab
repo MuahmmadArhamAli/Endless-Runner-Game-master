@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7111149589436850431}
   - component: {fileID: 3572314976427678726}
   - component: {fileID: 8901542552242054768}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Road
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5826282186355630281
 Transform:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6285876221420701072, guid: 34f7ccd908b9bac4589755990d1c679e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6285876221420701072, guid: 34f7ccd908b9bac4589755990d1c679e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -354,6 +354,10 @@ PrefabInstance:
     - target: {fileID: 6676850187448008682, guid: 34f7ccd908b9bac4589755990d1c679e, type: 3}
       propertyPath: m_Name
       value: ScoreMultiplier
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676850187448008682, guid: 34f7ccd908b9bac4589755990d1c679e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

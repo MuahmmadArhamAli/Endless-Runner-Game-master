@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6262644186172492407
 Transform:
   m_ObjectHideFlags: 0
@@ -277,7 +277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336687696493697227, guid: 9081685d58fdeeb49b176a741beef37d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6336687696493697227, guid: 9081685d58fdeeb49b176a741beef37d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -314,6 +314,10 @@ PrefabInstance:
     - target: {fileID: 6774394589459264060, guid: 9081685d58fdeeb49b176a741beef37d, type: 3}
       propertyPath: m_Name
       value: Invinvibilty
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774394589459264060, guid: 9081685d58fdeeb49b176a741beef37d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -474,7 +478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 8796dabeaef217e4282a33fd3071df7d, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

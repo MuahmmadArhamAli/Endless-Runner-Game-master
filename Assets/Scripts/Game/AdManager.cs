@@ -29,13 +29,13 @@ public class AdManager : MonoBehaviour
 
     private void Update()
     {
-        if (rewarded)
-        {
-            rewarded = false;
-            ShopManager SM = FindObjectOfType<ShopManager>();
-            if(SM != null)
-                SM.RewardWithAD();
-        }            
+        // if (rewarded)
+        // {
+        //     rewarded = false;
+        //     ShopManager SM = FindObjectOfType<ShopManager>();
+        //     if(SM != null)
+        //         SM.RewardWithAD();
+        // }            
     }
 
     // Returns an ad request with custom ad targeting.
@@ -46,75 +46,75 @@ public class AdManager : MonoBehaviour
 
     public void RequestBanner()
     {
-        // These ad units are configured to always serve test ads.
-        string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+        // // These ad units are configured to always serve test ads.
+        // string adUnitId = "ca-app-pub-3940256099942544/6300978111";
 
-        // Clean up banner ad before creating a new one.
-        if (this.bannerView != null)
-        {
-            this.bannerView.Destroy();
-        }
+        // // Clean up banner ad before creating a new one.
+        // if (this.bannerView != null)
+        // {
+        //     this.bannerView.Destroy();
+        // }
 
-        // Create a 320x50 banner at the top of the screen.
-        this.bannerView = new BannerView(adUnitId, AdSize.SmartBanner, AdPosition.Bottom);
+        // // Create a 320x50 banner at the top of the screen.
+        // this.bannerView = new BannerView(adUnitId, AdSize.SmartBanner, AdPosition.Bottom);
 
-        // Load a banner ad.
-        this.bannerView.LoadAd(this.CreateAdRequest());
+        // // Load a banner ad.
+        // this.bannerView.LoadAd(this.CreateAdRequest());
     }
 
     public void RequestInterstitial()
     {
-        // These ad units are configured to always serve test ads.
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        // // These ad units are configured to always serve test ads.
+        // string adUnitId = "ca-app-pub-3940256099942544/1033173712";
 
 
-        // Clean up interstitial ad before creating a new one.
-        if (this.interstitial != null)
-        {
-            this.interstitial.Destroy();
-        }
+        // // Clean up interstitial ad before creating a new one.
+        // if (this.interstitial != null)
+        // {
+        //     this.interstitial.Destroy();
+        // }
 
-        // Create an interstitial.
-        this.interstitial = new InterstitialAd(adUnitId);
+        // // Create an interstitial.
+        // this.interstitial = new InterstitialAd(adUnitId);
 
-        // Load an interstitial ad.
-        this.interstitial.LoadAd(this.CreateAdRequest());
+        // // Load an interstitial ad.
+        // this.interstitial.LoadAd(this.CreateAdRequest());
     }
 
     public void RequestRewardBasedVideo()
     {
-        string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        // string adUnitId = "ca-app-pub-3940256099942544/5224354917";
 
-        this.rewardBasedVideo.LoadAd(this.CreateAdRequest(), adUnitId);
+        // this.rewardBasedVideo.LoadAd(this.CreateAdRequest(), adUnitId);
     }
 
     public void ShowInterstitial()
     {
-        if (this.interstitial.IsLoaded())
-        {
-            this.interstitial.Show();
-        }
-        else
-        {
-            Debug.Log("Interstitial is not ready yet");
-        }
+        // if (this.interstitial.IsLoaded())
+        // {
+        //     this.interstitial.Show();
+        // }
+        // else
+        // {
+        //     Debug.Log("Interstitial is not ready yet");
+        // }
     }
 
     public void ShowRewardBasedVideo()
     {
 
-        if (this.rewardBasedVideo.IsLoaded())
-        {
-            this.rewardBasedVideo.Show();
-        }
-        else
-        {
-            MainMenu menu = FindObjectOfType<MainMenu>();
-            if (menu != null)
-                menu.messageAnim.SetTrigger("show");
+        // if (this.rewardBasedVideo.IsLoaded())
+        // {
+        //     this.rewardBasedVideo.Show();
+        // }
+        // else
+        // {
+        //     MainMenu menu = FindObjectOfType<MainMenu>();
+        //     if (menu != null)
+        //         menu.messageAnim.SetTrigger("show");
 
-            Debug.Log("Video is not ready yet");
-        }
+        //     Debug.Log("Video is not ready yet");
+        // }
     }
 
 
@@ -122,12 +122,12 @@ public class AdManager : MonoBehaviour
 
     public void HandleRewardBasedVideoClosed(object sender, EventArgs args)
     {
-        this.RequestRewardBasedVideo();
+        // this.RequestRewardBasedVideo();
     }
 
     public void HandleRewardBasedVideoRewarded(object sender, Reward args)
     {
-        rewarded = true;
+        // rewarded = true;
     }
 
     #endregion

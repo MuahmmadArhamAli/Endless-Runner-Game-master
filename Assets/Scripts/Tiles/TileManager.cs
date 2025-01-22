@@ -22,7 +22,12 @@ public class TileManager : MonoBehaviour
     private int previousIndex;
 
     private void Awake(){
-        Instance = this;
+        if (Instance == null){
+            Instance = this;
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -90,5 +95,10 @@ public class TileManager : MonoBehaviour
         yield return new WaitForSeconds(5f);
 
         scoreMultiplier -= 1;
+    }
+
+    private void OnDestroy(){
+        ScoreMultiplier.OnPlayerEntered -= ScoreMultiplier_OnPlayerEntered;
+        StopCoroutine(ScoreMultiplierTimer());
     }
 }

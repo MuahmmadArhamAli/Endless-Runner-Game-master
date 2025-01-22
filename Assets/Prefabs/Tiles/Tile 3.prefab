@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1048716378256036318
 Transform:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 4393602125485068776}
   - component: {fileID: 8054050979588058385}
   - component: {fileID: 2728747011822409575}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Road
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336687696493697227, guid: 9081685d58fdeeb49b176a741beef37d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6336687696493697227, guid: 9081685d58fdeeb49b176a741beef37d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -671,6 +671,10 @@ PrefabInstance:
     - target: {fileID: 6774394589459264060, guid: 9081685d58fdeeb49b176a741beef37d, type: 3}
       propertyPath: m_Name
       value: Invinvibilty
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774394589459264060, guid: 9081685d58fdeeb49b176a741beef37d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

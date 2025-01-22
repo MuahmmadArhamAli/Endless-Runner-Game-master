@@ -6,7 +6,7 @@ public class InvincibiltyPowerUp : MonoBehaviour{
 
     [SerializeField] private PlayerController playerController;
 
-    [SerializeField] private float invincibilityTime = 7.5f;
+    [SerializeField] private float invincibilityTime = 5f;
     private void Start(){
         Invincibility.OnPlayerEntered += Invincibilty_OnPlayerEntered;
     }
@@ -21,5 +21,10 @@ public class InvincibiltyPowerUp : MonoBehaviour{
         yield return new WaitForSeconds(invincibilityTime);
 
         playerController.isInvincible = false;
+    }
+
+    private void OnDestroy(){
+        Invincibility.OnPlayerEntered -= Invincibilty_OnPlayerEntered;
+        StopCoroutine(OnInvincible());
     }
 }

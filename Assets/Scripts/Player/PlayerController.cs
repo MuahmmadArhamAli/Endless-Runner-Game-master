@@ -63,15 +63,16 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isGameStarted", true);
         move.z = forwardSpeed;
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.17f, groundLayer);
+        isGrounded = Physics.CheckSphere(groundCheck.position, 1f, groundLayer);
         animator.SetBool("isGrounded", isGrounded);
         if (isGrounded && velocity.y < 0)
             velocity.y = -1f;
 
         if (isGrounded)
         {
-            if (SwipeManager.swipeUp)
+            if (SwipeManager.swipeUp){
                 Jump();
+            }
 
             if (SwipeManager.swipeDown && !isSliding)
                 StartCoroutine(Slide());
@@ -125,6 +126,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {   
+        Debug.Log("Jump in");
         StopCoroutine(Slide());
         animator.SetBool("isSliding", false);
         animator.SetTrigger("jump");
