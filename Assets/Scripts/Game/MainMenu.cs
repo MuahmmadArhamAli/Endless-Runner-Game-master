@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI gemsText;
+    public TextMeshProUGUI gems2Text;
 
     public Animator messageAnim;
 
@@ -17,6 +18,7 @@ public class MainMenu : MonoBehaviour
     {
         highScoreText.text = "High Score\n" + PlayerPrefs.GetInt("HighScore", 0);
         gemsText.text = PlayerPrefs.GetInt("TotalGems", 0).ToString();
+        gems2Text.text = gemsText.text;
     }
     public void PlayGame()
     {
