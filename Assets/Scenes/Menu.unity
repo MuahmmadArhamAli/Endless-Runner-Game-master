@@ -1019,7 +1019,6 @@ GameObject:
   - component: {fileID: 323624261}
   - component: {fileID: 323624260}
   - component: {fileID: 323624259}
-  - component: {fileID: 323624258}
   - component: {fileID: 323624262}
   m_Layer: 5
   m_Name: WatchAD (1)
@@ -1049,18 +1048,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 110, y: 45}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &323624258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 323624256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc046e7eb6cf2424b82b4dfdfe30af65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &323624259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1180,7 +1167,6 @@ GameObject:
   - component: {fileID: 400598602}
   - component: {fileID: 400598601}
   - component: {fileID: 400598600}
-  - component: {fileID: 400598599}
   m_Layer: 5
   m_Name: Buy
   m_TagString: Untagged
@@ -1209,18 +1195,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 110, y: 45}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &400598599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 400598597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2b924f2a6f0d0c429cb93041ca64263, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &400598600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,6 +1766,7 @@ MonoBehaviour:
   androidGameId: 5783261
   iosGameId: 5783260
   isTesting: 1
+  rewardedAds: {fileID: 550890748}
 --- !u!4 &787830745
 Transform:
   m_ObjectHideFlags: 0
@@ -2280,7 +2255,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initializeAds: {fileID: 787830744}
-  rewardedAds: {fileID: 550890748}
 --- !u!1 &932799575
 GameObject:
   m_ObjectHideFlags: 0
