@@ -19,6 +19,8 @@ public class PlayerManager : MonoBehaviour
     public static bool isGamePaused;
     public GameObject[] characterPrefabs;
 
+    public InterstitialAds interstitialAds;
+
     private void Awake()
     {
         int index = PlayerPrefs.GetInt("SelectedCharacter");
@@ -41,6 +43,9 @@ public class PlayerManager : MonoBehaviour
         //Game Over
         if (gameOver)
         {
+            if (Random.Range(0, 1) <= 0.5 )
+                interstitialAds.ShowInterstitialAd();
+
             Time.timeScale = 0;
             if (score > PlayerPrefs.GetInt("HighScore", 0))
             {

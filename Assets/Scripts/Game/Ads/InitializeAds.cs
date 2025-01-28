@@ -11,6 +11,7 @@ public class InitializeAds : MonoBehaviour ,IUnityAdsInitializationListener
     [SerializeField] private bool isTesting;
 
     public RewardedAds rewardedAds;
+    public InterstitialAds interestialAds;
 
 
     private string gameId;
@@ -37,7 +38,8 @@ public class InitializeAds : MonoBehaviour ,IUnityAdsInitializationListener
     {
         Debug.Log("Ads Initialized...");
         
-        rewardedAds.LoadRewardedAd();    
+        rewardedAds.LoadRewardedAd();
+        interestialAds.LoadInterstitialAd();
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)    {    }

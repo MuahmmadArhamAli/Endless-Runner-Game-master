@@ -6,6 +6,7 @@ public class AdManager : MonoBehaviour
 {
     public InitializeAds initializeAds;
     public static AdManager Instance { get; private set; }
+    
 
     private void Awake()
     {
@@ -16,5 +17,7 @@ public class AdManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+
     }
 }
