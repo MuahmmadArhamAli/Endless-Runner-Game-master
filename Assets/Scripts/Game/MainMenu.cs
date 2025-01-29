@@ -10,6 +10,8 @@ public class MainMenu : MonoBehaviour
 
     public Animator messageAnim;
 
+    [SerializeField] private WatchAdd watchAdd;
+
     private void Start()
     {
         Time.timeScale = 1;
@@ -22,11 +24,15 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayGame()
     {
+        PlayerPrefs.SetFloat(watchAdd.timeExitedKey, (float)System.DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+        PlayerPrefs.Save();
         SceneManager.LoadScene("Level");
     }
 
     public void QuitGame()
     {
+        PlayerPrefs.SetFloat(watchAdd.timeExitedKey, (float)System.DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+        PlayerPrefs.Save();
         Application.Quit();
     }
 }

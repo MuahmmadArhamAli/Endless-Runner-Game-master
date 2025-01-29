@@ -18,8 +18,8 @@ public class InvincibilityTimerUI : MonoBehaviour{
             invincibilityText.gameObject.SetActive(false);
         }
         else {
-            invincibilityText.gameObject.SetActive(true);   
-            invincibilityText.text = player.timer.ToString();
+            invincibilityText.gameObject.SetActive(true);
+            invincibilityText.text = player.timer.ToString("F1");
         }
     }
 }
