@@ -79,6 +79,8 @@ public class TileManager : MonoBehaviour
         tile.transform.rotation = Quaternion.identity;
         tile.SetActive(true);
 
+        tile.GetComponent<TilePowerUpDisabler>().TogglePowerUp();
+
         activeTiles.Add(tile);
         zSpawn += tileLength;
         previousIndex = index;

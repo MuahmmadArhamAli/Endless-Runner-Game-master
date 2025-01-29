@@ -3,6 +3,7 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_Brightness ("Brightness", float) = 1
 	}
 	SubShader
 	{
