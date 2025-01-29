@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class WatchAdd : MonoBehaviour
 {
+    [SerializeField] private AndroidNotification androidNotification;
+    [SerializeField] private IOSNotification iOSNotification;
     [SerializeField] private RewardedAds rewardedAds;
     private Button button;
 
@@ -17,6 +19,13 @@ public class WatchAdd : MonoBehaviour
         button.onClick.AddListener(() => {
             button.interactable = false;
             rewardedAds.ShowRewardedAd();
+            #if UNITY_ANDROID
+            androidNotification.SendNotification("Ad Avaialable", "Watch Ad to Get reward", (int)testThreshold);
+            #endif
+
+            #if UNITY_IOS
+            iOSNotification.SendNotification("Ad Avaialable", "A new ad is available to watch", "Watch to get reward",(int)testThreshold);
+            #endif
         });
 
         CheckTimeElapsed();

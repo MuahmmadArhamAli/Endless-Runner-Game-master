@@ -1,9 +1,12 @@
 using UnityEngine;
+
+#if UNITY_ANDROID
 using Unity.Notifications.Android;
 using UnityEngine.Android;
-using UnityEditor.Rendering;
+#endif
 public class AndroidNotification : MonoBehaviour{
 
+    #if UNITY_ANDROID
     public void RequestAuthorization(){
         if (!Permission.HasUserAuthorizedPermission("android.permission.POST_NOTIFICATIONS")){
             Permission.RequestUserPermission("android.permission.POST_NOTIFICATIONS");
@@ -28,5 +31,5 @@ public class AndroidNotification : MonoBehaviour{
 
         AndroidNotificationCenter.SendNotification(notification, "default_channel");
     }
-    
+    #endif
 }
