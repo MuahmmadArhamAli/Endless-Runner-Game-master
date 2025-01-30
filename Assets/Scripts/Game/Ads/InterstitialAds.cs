@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
+using GoogleMobileAds;
+using GoogleMobileAds.Api;
+
 public class InterstitialAds : MonoBehaviour , IUnityAdsLoadListener ,IUnityAdsShowListener
 {
     [SerializeField] private string androidAdUnitId;
     [SerializeField] private string iosAdUnitId;
 
     private string adUnitId;
+
+    #region Google Ads
+
+    private InterstitialAd interstitialAd;
+
+    #endregion
 
     private void Awake()
     {
@@ -21,16 +30,74 @@ public class InterstitialAds : MonoBehaviour , IUnityAdsLoadListener ,IUnityAdsS
         #endif
     }
 
+    private void Start(){
+        #region  Google Ad Mob
+        
+        MobileAds.Initialize((InitializationStatus initstatus)=>{
+            
+        });
+
+        #endregion
+    }
+
     public void LoadInterstitialAd()
     {
-        Advertisement.Load(adUnitId, this);
+        #region  Unity Ads
+        // Advertisement.Load(adUnitId, this);
+        #endregion
+
+        #region Google Ads
+
+        var adRequest = new AdRequest();
+        
+        // send the request to load the ad.
+        InterstitialAd.Load(adUnitId, adRequest,
+            (InterstitialAd ad, LoadAdError error) =>
+            {
+                // if error is not null, the load request failed.
+                if (error != null || ad == null)
+                {
+                    Debug.LogError("interstitial ad failed to load an ad " +
+                                   "with error : " + error);
+                    return;
+                }
+
+                Debug.Log("Interstitial ad loaded with response : "
+                          + ad.GetResponseInfo());
+
+                interstitialAd = ad;
+            });
+
+        #endregion
     }
 
     public void ShowInterstitialAd()
     {
-        Advertisement.Show(adUnitId, this);
-        LoadInterstitialAd();
+        #region Unity Ads
+        // Advertisement.Show(adUnitId, this);
+        // LoadInterstitialAd();
+        #endregion
+
+        #region Google Ads
+
+         if (interstitialAd != null && interstitialAd.CanShowAd())
+        {
+            Debug.Log("Showing interstitial ad.");
+            interstitialAd.Show();
+
+            LoadInterstitialAd();
+        }
+        else
+        {
+            Debug.LogError("Interstitial ad is not ready yet.");
+        }
+
+        #endregion
+
     }
+    
+    #region  Unity Ads
+    
     
     #region LoadCallbacks
     public void OnUnityAdsAdLoaded(string placementId)
@@ -51,5 +118,8 @@ public class InterstitialAds : MonoBehaviour , IUnityAdsLoadListener ,IUnityAdsS
     {
         Debug.Log("Interstitial Ad Completed");
     }
+    #endregion
+
+
     #endregion
 }
