@@ -1,6 +1,7 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public Animator messageAnim;
 
     [SerializeField] private WatchAdd watchAdd;
+    [SerializeField] private PaystackConverter paystackConverter;
 
     private void Start()
     {
@@ -31,6 +33,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        PlayerPrefs.SetString(paystackConverter.lastQuitTime, DateTime.Now.ToString());
         PlayerPrefs.SetFloat(watchAdd.timeExitedKey, (float)System.DateTimeOffset.UtcNow.ToUnixTimeSeconds());
         PlayerPrefs.Save();
         Application.Quit();
