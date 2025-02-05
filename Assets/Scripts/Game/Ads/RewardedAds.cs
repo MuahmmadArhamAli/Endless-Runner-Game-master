@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
-using GoogleMobileAds.Api;
+// using GoogleMobileAds.Api;
 
 public class RewardedAds : MonoBehaviour ,IUnityAdsLoadListener ,IUnityAdsShowListener
 {
@@ -11,7 +11,7 @@ public class RewardedAds : MonoBehaviour ,IUnityAdsLoadListener ,IUnityAdsShowLi
     private string adUnitId;
 
     #region Google Ads
-    private RewardedAd rewardedAd;
+    // private RewardedAd rewardedAd;
     #endregion
 
     private void Awake()
@@ -29,38 +29,38 @@ public class RewardedAds : MonoBehaviour ,IUnityAdsLoadListener ,IUnityAdsShowLi
     public void LoadRewardedAd()
     {
         #region Unity Ads
-        // Debug.Log(adUnitId);
-        // Advertisement.Load(adUnitId, this);
+        Debug.Log(adUnitId);
+        Advertisement.Load(adUnitId, this);
         #endregion
 
         #region  Google Ads
 
-        if (rewardedAd != null)
-        {
-            rewardedAd.Destroy();
-            rewardedAd = null;
-        }
+        // if (rewardedAd != null)
+        // {
+        //     rewardedAd.Destroy();
+        //     rewardedAd = null;
+        // }
 
-        Debug.Log("Loading the rewarded ad.");
+        // Debug.Log("Loading the rewarded ad.");
 
-        // create our request used to load the ad.
-        var adRequest = new AdRequest();
+        // // create our request used to load the ad.
+        // var adRequest = new AdRequest();
 
-        // send the request to load the ad.
-        RewardedAd.Load(adUnitId, adRequest,
-            (RewardedAd ad, LoadAdError error) =>
-            {
-                // if error is not null, the load request failed.
-                if (error != null || ad == null)
-                {
-                    Debug.LogError("Rewarded ad failed to load an ad " +
-                                   "with error : " + error);
-                    return;
-                }
-                Debug.Log("Rewarded ad loaded with response : "
-                          + ad.GetResponseInfo());
-                rewardedAd = ad;
-            });
+        // // send the request to load the ad.
+        // RewardedAd.Load(adUnitId, adRequest,
+        //     (RewardedAd ad, LoadAdError error) =>
+        //     {
+        //         // if error is not null, the load request failed.
+        //         if (error != null || ad == null)
+        //         {
+        //             Debug.LogError("Rewarded ad failed to load an ad " +
+        //                            "with error : " + error);
+        //             return;
+        //         }
+        //         Debug.Log("Rewarded ad loaded with response : "
+        //                   + ad.GetResponseInfo());
+        //         rewardedAd = ad;
+        //     });
 
         #endregion
 
@@ -70,25 +70,25 @@ public class RewardedAds : MonoBehaviour ,IUnityAdsLoadListener ,IUnityAdsShowLi
     {
         #region Unity Ads
 
-        // Advertisement.Show(adUnitId, this);
-        // LoadRewardedAd();
+        Advertisement.Show(adUnitId, this);
+        LoadRewardedAd();
         
         #endregion
 
         #region Google Ads
     
-        if (rewardedAd != null && rewardedAd.CanShowAd())
-        {
-            rewardedAd.Show((Reward reward) =>
-            {
-                // TODO: Reward the user.
-                PlayerPrefs.SetInt("TotalGems", PlayerPrefs.GetInt("TotalGems", 0) + 200);
+        // if (rewardedAd != null && rewardedAd.CanShowAd())
+        // {
+        //     rewardedAd.Show((Reward reward) =>
+        //     {
+        //         // TODO: Reward the user.
+        //         PlayerPrefs.SetInt("TotalGems", PlayerPrefs.GetInt("TotalGems", 0) + 200);
 
-                rewardedAd.Destroy();
+        //         rewardedAd.Destroy();
 
-                LoadRewardedAd();
-            });
-        }
+        //         LoadRewardedAd();
+        //     });
+        // }
         
         #endregion
 
@@ -123,40 +123,40 @@ public class RewardedAds : MonoBehaviour ,IUnityAdsLoadListener ,IUnityAdsShowLi
 
     #region Google Ads
 
-    private void RegisterEventHandlers(RewardedAd ad)
-{
-    // Raised when the ad is estimated to have earned money.
-    ad.OnAdPaid += (AdValue adValue) =>
-    {
+//     private void RegisterEventHandlers(RewardedAd ad)
+// {
+//     // Raised when the ad is estimated to have earned money.
+//     ad.OnAdPaid += (AdValue adValue) =>
+//     {
 
-    };
-    // Raised when an impression is recorded for an ad.
-    ad.OnAdImpressionRecorded += () =>
-    {
-        Debug.Log("Rewarded ad recorded an impression.");
-    };
-    // Raised when a click is recorded for an ad.
-    ad.OnAdClicked += () =>
-    {
-        Debug.Log("Rewarded ad was clicked.");
-    };
-    // Raised when an ad opened full screen content.
-    ad.OnAdFullScreenContentOpened += () =>
-    {
-        Debug.Log("Rewarded ad full screen content opened.");
-    };
-    // Raised when the ad closed full screen content.
-    ad.OnAdFullScreenContentClosed += () =>
-    {
-        Debug.Log("Rewarded ad full screen content closed.");
-    };
-    // Raised when the ad failed to open full screen content.
-    ad.OnAdFullScreenContentFailed += (AdError error) =>
-    {
-        Debug.LogError("Rewarded ad failed to open full screen content " +
-                       "with error : " + error);
-    };
-}
+//     };
+//     // Raised when an impression is recorded for an ad.
+//     ad.OnAdImpressionRecorded += () =>
+//     {
+//         Debug.Log("Rewarded ad recorded an impression.");
+//     };
+//     // Raised when a click is recorded for an ad.
+//     ad.OnAdClicked += () =>
+//     {
+//         Debug.Log("Rewarded ad was clicked.");
+//     };
+//     // Raised when an ad opened full screen content.
+//     ad.OnAdFullScreenContentOpened += () =>
+//     {
+//         Debug.Log("Rewarded ad full screen content opened.");
+//     };
+//     // Raised when the ad closed full screen content.
+//     ad.OnAdFullScreenContentClosed += () =>
+//     {
+//         Debug.Log("Rewarded ad full screen content closed.");
+//     };
+//     // Raised when the ad failed to open full screen content.
+//     ad.OnAdFullScreenContentFailed += (AdError error) =>
+//     {
+//         Debug.LogError("Rewarded ad failed to open full screen content " +
+//                        "with error : " + error);
+//     };
+// }
 
     #endregion
 
