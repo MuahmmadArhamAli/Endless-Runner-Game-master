@@ -1634,7 +1634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5bc172ca021fc4391a486b7eb82def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  androidAdUnitId: Rewarded_Android
+  androidAdUnitId: ca-app-pub-9227764449782284/5392209313
   iosAdUnitId: Rewarded_iOS
 --- !u!4 &550890749
 Transform:
@@ -1887,7 +1887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d34db9a03552b46a78935d4830db26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  androidAdUnitId: Interstitial_Android
+  androidAdUnitId: ca-app-pub-9227764449782284/2574474289
   iosAdUnitId: Interstitial_iOS
 --- !u!4 &808464150
 Transform:

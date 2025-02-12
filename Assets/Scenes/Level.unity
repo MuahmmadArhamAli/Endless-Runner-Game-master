@@ -823,7 +823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d34db9a03552b46a78935d4830db26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  androidAdUnitId: 'ca-app-pub-3940256099942544/1033173712  '
+  androidAdUnitId: ca-app-pub-9227764449782284/2574474289
   iosAdUnitId: 'ca-app-pub-3940256099942544/4411468910  '
 --- !u!4 &313358195
 Transform:
@@ -2184,7 +2184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5bc172ca021fc4391a486b7eb82def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  androidAdUnitId: 'ca-app-pub-3940256099942544/5224354917  '
+  androidAdUnitId: ca-app-pub-9227764449782284/5392209313
   iosAdUnitId: 'ca-app-pub-3940256099942544/1712485313  '
 --- !u!4 &839352436
 Transform:
