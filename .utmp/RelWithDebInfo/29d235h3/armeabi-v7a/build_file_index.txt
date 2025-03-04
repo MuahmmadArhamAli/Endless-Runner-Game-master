@@ -1,2 +1,0 @@
-D:\Arham\Github clones\Endless-Runner-Game-master\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
-D:\Arham\Github clones\Endless-Runner-Game-master\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\cpp\FramePacing\CMakeLists.txt

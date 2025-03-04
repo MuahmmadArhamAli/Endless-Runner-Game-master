@@ -43,7 +43,7 @@ public class PlayerManager : MonoBehaviour
         //Game Over
         if (gameOver)
         {
-            if (Random.Range(0, 1) <= 0.5 )
+            // if (Random.Range(0, 1) <= 1 )
                 interstitialAds.ShowInterstitialAd();
 
             Time.timeScale = 0;

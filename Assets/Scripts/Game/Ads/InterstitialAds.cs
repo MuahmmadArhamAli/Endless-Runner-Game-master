@@ -34,7 +34,8 @@ public class InterstitialAds : MonoBehaviour , IUnityAdsLoadListener ,IUnityAdsS
         #region  Google Ad Mob
         
         MobileAds.Initialize((InitializationStatus initstatus)=>{
-            
+            Debug.Log("AdMob Initialized");
+            LoadInterstitialAd();
         });
 
         #endregion
@@ -79,7 +80,7 @@ public class InterstitialAds : MonoBehaviour , IUnityAdsLoadListener ,IUnityAdsS
         #endregion
 
         #region Google Ads
-
+        Debug.Log("Hello World");
          if (interstitialAd != null && interstitialAd.CanShowAd())
         {
             Debug.Log("Showing interstitial ad.");
@@ -87,10 +88,10 @@ public class InterstitialAds : MonoBehaviour , IUnityAdsLoadListener ,IUnityAdsS
 
             LoadInterstitialAd();
         }
-        // else
-        // {
-        //     Debug.LogError("Interstitial ad is not ready yet.");
-        // }
+        else
+        {
+            Debug.LogError("Interstitial ad is not ready yet.");
+        }
 
         #endregion
 
