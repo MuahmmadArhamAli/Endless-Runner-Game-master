@@ -18,7 +18,8 @@ public class PaystackConverter : MonoBehaviour{
             return;
         }
 
-        //Convert To Paystack
+        int money = PlayerPrefs.GetInt("TotalGems", 0);
+        PlayerPrefs.SetInt("NGN",money);
 
         int secondsToNextMonth = GetSecondsToNextMonth(currentDate);
 

@@ -11,7 +11,7 @@ public class WatchAdd : MonoBehaviour
     public string timeExitedKey = "timerExited";
     private float elapsedTime = 0f;
     private bool oneHourPassed = false;
-    private const float testThreshold = 60f; // Change this to 3600f for 1 hour
+    private const float testThreshold = 3600f; // Change this to 3600f for 1 hour
 
     private void Awake()
     {
