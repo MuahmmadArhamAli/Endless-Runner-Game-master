@@ -20,6 +20,10 @@ public class PaystackConverter : MonoBehaviour{
 
         int money = PlayerPrefs.GetInt("TotalGems", 0);
         PlayerPrefs.SetInt("NGN",money);
+        PlayerPrefs.SetInt("TotalGems", 0);
+        PlayerPrefs.Save();
+
+        Debug.Log(PlayerPrefs.GetInt("NGN", 0));
 
         int secondsToNextMonth = GetSecondsToNextMonth(currentDate);
 

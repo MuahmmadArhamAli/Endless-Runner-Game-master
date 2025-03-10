@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PaystackManager : MonoBehaviour
 {
     [Header("Paystack API Keys")]
-    private string secretKey = "sk_test_xxxxxxxxxxxxxxxxx"; // Replace with your secret key
+    private string secretKey = "sk_test_f645e3354e753f88424f08af56e27ce4364737d5"; // Replace with your secret key
 
     [Header("UI Elements")]
     public TMP_Dropdown bankDropdown;
@@ -74,6 +74,8 @@ public class PaystackManager : MonoBehaviour
         string selectedBank = bankDropdown.options[bankDropdown.value].text;
         string bankCode = bankCodeMap[selectedBank];
         string accountNumber = accountNumberInput.text;
+
+        Debug.Log($"Bank: {selectedBank}, Bank Code: {bankCode}, Account Number: {accountNumber}");
 
         if (string.IsNullOrEmpty(accountNumber))
         {
@@ -162,7 +164,7 @@ public class PaystackManager : MonoBehaviour
     private IEnumerator InitiateTransfer(string recipientCode, int amountInKobo, string reason)
     {
         string url = "https://api.paystack.co/transfer";
-        string jsonPayload = $"{{\"source\":\"balance\",\"amount\":{amountInKobo},\"recipient\":\"{recipientCode}\",\"reason\":\"{reason}\"}}";
+        string jsonPayload = $"{{\"source\":\"balance\",\"amount\":{amountInKobo},\"recipient\":\"{recipientCode}\",\"reason\":\"{reason}\",\"currency\":\"NGN\"}}";
         byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonPayload);
 
         UnityWebRequest request = new UnityWebRequest(url, "POST");
@@ -176,10 +178,13 @@ public class PaystackManager : MonoBehaviour
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("Withdrawal Successful: " + request.downloadHandler.text);
+            PlayerPrefs.SetInt("NGN", 0);
+            PlayerPrefs.Save();
         }
         else
         {
             Debug.LogError("Withdrawal Failed: " + request.error);
+            Debug.LogError("Error Details: " + request.downloadHandler.text);
             somethingWentWrongText.gameObject.SetActive(true);
             StartCoroutine(WaitForAnimation());
         }

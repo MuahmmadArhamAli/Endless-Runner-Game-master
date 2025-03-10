@@ -17,6 +17,14 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1;
+
+        Application.quitting -= OnAppQuit;
+        Application.quitting += OnAppQuit;
+    }
+    void OnAppQuit(){
+        PlayerPrefs.SetString(paystackConverter.lastQuitTime, DateTime.Now.ToString());
+        PlayerPrefs.SetFloat(watchAdd.timeExitedKey, (float)System.DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+        PlayerPrefs.Save();
     }
     private void Update()
     {
@@ -33,9 +41,6 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        PlayerPrefs.SetString(paystackConverter.lastQuitTime, DateTime.Now.ToString());
-        PlayerPrefs.SetFloat(watchAdd.timeExitedKey, (float)System.DateTimeOffset.UtcNow.ToUnixTimeSeconds());
-        PlayerPrefs.Save();
         Application.Quit();
     }
 }
