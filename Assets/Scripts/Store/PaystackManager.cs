@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -11,6 +13,10 @@ public class PaystackManager : MonoBehaviour
     private string secretKey = "sk_test_f645e3354e753f88424f08af56e27ce4364737d5"; // Replace with your secret key
 
     [Header("UI Elements")]
+    public TMP_InputField bankNameInputField;
+    
+    private List<String> bankNames = new List<string>();
+
     public TMP_Dropdown bankDropdown;
     public TMP_InputField accountNumberInput;
     public TextMeshProUGUI accountNameText;
@@ -18,17 +24,74 @@ public class PaystackManager : MonoBehaviour
     public Button withdrawButton;
 
     public TextMeshProUGUI somethingWentWrongText;
+    public TextMeshProUGUI ngnText;
 
     private Dictionary<string, string> bankCodeMap = new Dictionary<string, string>();
     private string recipientCode = "";
 
+    public Button load1Button;
+    public Button load2Button;
+    public Button load3Button;
+    public Button save1Button;
+    public Button save2Button;
+    public Button save3Button;
+
+    private void Awake()
+    {
+        load1Button.onClick.AddListener(()=>{
+            LoadInfo(1);
+        });
+        load2Button.onClick.AddListener(()=>{
+            LoadInfo(2);
+        });
+        load3Button.onClick.AddListener(()=>{
+            LoadInfo(3);
+        });
+
+        save1Button.onClick.AddListener(()=>{
+            SaveInfo(1);
+        });
+        save2Button.onClick.AddListener(()=>{
+            SaveInfo(2);
+        });
+        save3Button.onClick.AddListener(()=>{
+            SaveInfo(3);
+        });
+    }
+
+    private void LoadInfo(int number){
+        FilterDropdown(PlayerPrefs.GetString( "BankName" + number.ToString(), ""));
+        bankDropdown.Show();
+        string selectedBank = bankDropdown.options[bankDropdown.value].text;
+        bankNameInputField.text = selectedBank;
+        accountNumberInput.text = PlayerPrefs.GetString( "AccountNumber" + number.ToString(), "" );
+    }
+    private void SaveInfo(int number){
+        PlayerPrefs.SetString("BankName" + number.ToString(), bankNameInputField.text);
+        PlayerPrefs.SetString("AccountNumber" + number.ToString(), accountNumberInput.text);
+        PlayerPrefs.Save();
+    }
+
     void Start()
     {
+        ngnText.text = "NGN :" + PlayerPrefs.GetInt("NGN", 0).ToString();
         withdrawButton.interactable = false;
         somethingWentWrongText.gameObject.SetActive(false);
         StartCoroutine(GetBankList());
         verifyButton.onClick.AddListener(VerifyAccount);
         withdrawButton.onClick.AddListener(InitiateWithdrawal);
+
+        bankNameInputField.onEndEdit.AddListener((input) => {
+            FilterDropdown(input);
+            bankDropdown.Show();
+            string selectedBank = bankDropdown.options[bankDropdown.value].text;
+            bankNameInputField.text = selectedBank;
+        });
+
+        bankDropdown.onValueChanged.AddListener((value) => {
+            string selectedBank = bankDropdown.options[bankDropdown.value].text;
+            bankNameInputField.text = selectedBank;
+        });
     }
 
     // ✅ Step 1: Fetch Bank List and Populate Dropdown
@@ -51,7 +114,6 @@ public class PaystackManager : MonoBehaviour
 
             bankDropdown.ClearOptions();
 
-            List<string> bankNames = new List<string>();
             foreach (var bank in json.data)
             {
                 bankNames.Add(bank.name);
@@ -232,4 +294,24 @@ public class PaystackManager : MonoBehaviour
     {
         public string recipient_code;
     }
+
+    void FilterDropdown(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            UpdateDropdown(bankNames); // Restore full list
+        }
+        else
+        {
+            var filteredBanks = bankNames.Where(b => b.ToLower().StartsWith(input.ToLower())).ToList();
+            UpdateDropdown(filteredBanks);
+        }
+    }
+
+    void UpdateDropdown(List<string> banks)
+    {
+        bankDropdown.ClearOptions();
+        bankDropdown.AddOptions(banks);
+    }
+
 }

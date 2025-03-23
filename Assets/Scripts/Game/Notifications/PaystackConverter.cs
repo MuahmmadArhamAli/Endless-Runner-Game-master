@@ -14,7 +14,7 @@ public class PaystackConverter : MonoBehaviour{
 
         DateTime lastSavedDate = DateTime.Parse(PlayerPrefs.GetString(lastQuitTime, currentDateString));
 
-        if (currentDate.Month == lastSavedDate.Month) {
+        if (currentDate.Minute - lastSavedDate.Minute < 10) {
             return;
         }
 
