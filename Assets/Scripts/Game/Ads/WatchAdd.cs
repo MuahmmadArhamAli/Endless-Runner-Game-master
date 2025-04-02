@@ -20,6 +20,7 @@ public class WatchAdd : MonoBehaviour
             button.interactable = false;
             rewardedAds.ShowRewardedAd();
             #if UNITY_ANDROID
+            androidNotification.RegisterNotificationChannel();
             androidNotification.SendNotification("Ad Avaialable", "Watch Ad to Get reward", (int)testThreshold);
             #endif
 

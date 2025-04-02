@@ -28,6 +28,7 @@ public class PaystackConverter : MonoBehaviour{
         int secondsToNextMonth = GetSecondsToNextMonth(currentDate);
 
 #if UNITY_ANDOID
+            androidNotification.RegisterNotificationChannel();
             androidNotification.SendNotification("Money Converted", "Your Gems Have been converted", secondsToNextMonth);
 #elif UNITY_IOS
             iosNotification.SendNotification("Money Converted", "Your Gems Have been converted", "Withdraw them now", secondsToNextMonth);

@@ -9,6 +9,10 @@ using Unity.Notifications.iOS;
 #endif
 
 public class NotificationManager : MonoBehaviour{
+    private void Start()
+    {
+        GetComponent<AndroidNotification>().RequestAuthorization();
+    }
 
     private void OnApplicationFocus(bool focus){
         if (focus == false){

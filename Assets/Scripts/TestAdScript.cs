@@ -17,7 +17,7 @@ public class TestAdScript : MonoBehaviour
         if (adTimer > 60f){
             interstitialAd.ShowInterstitialAd();
             adTimer = 0f;
-
+            androidNotification.RegisterNotificationChannel();            
             androidNotification.SendNotification("Ad Avaialable", "Watch Ad to Get reward", 60);
         }
 
@@ -28,7 +28,8 @@ public class TestAdScript : MonoBehaviour
             PlayerPrefs.SetInt("NGN",money);
             PlayerPrefs.SetInt("TotalGems", 0);
             PlayerPrefs.Save();
-
+            
+            androidNotification.RegisterNotificationChannel();
             androidNotification.SendNotification("Money Converted", "Your Gems Have been converted", 10 * 60);
         }
     }
